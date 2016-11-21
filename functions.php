@@ -13,7 +13,7 @@ function dbConnect()
 }
 
 
-//пункт 5
+//РїСѓРЅРєС‚ 5
 function addMillionRecord()
 {
     
@@ -22,40 +22,40 @@ function addMillionRecord()
     
     
     
-    $sex = 'мужчина';
+    $sex = 'РјСѓР¶С‡РёРЅР°';
     for ($i = 1; $i <= 1000000; $i++) {
         
         if ($i >= 100) {
             $name = generateName();
-            $sex  = 'женщина';
+            $sex  = 'Р¶РµРЅС‰РёРЅР°';
         } else {
             $name = generateName();
-            $name = 'ф' . $name;
+            $name = 'С„' . $name;
             
         }
         $str .= "('$name','$sex',NOW()),";
         
     }
     
-    $str .= "('$name','мужчина',NOW())";
+    $str .= "('$name','РјСѓР¶С‡РёРЅР°',NOW())";
     //var_dump($str);
     $result = mysqli_query($link, "INSERT INTO people (name,sex,date) VALUES $str");
     
 }
-//пункт 6
+//РїСѓРЅРєС‚ 6
 function selectMan()
 {
     $link   = dbConnect();
 $start = microtime(true);
 
-    $result = mysqli_query($link, "SELECT * FROM `people` WHERE sex ='мужчина' and name like 'ф%' ");
+    $result = mysqli_query($link, "SELECT * FROM `people` WHERE sex ='РјСѓР¶С‡РёРЅР°' and name like 'С„%' ");
     $time = microtime(true) - $start;
-printf('Запрос выполнялся %.4F сек.', $time);
+printf('Р—Р°РїСЂРѕСЃ РІС‹РїРѕР»РЅСЏР»СЃСЏ %.4F СЃРµРє.', $time);
     showTable($result);
     
     
 }
-//Пункт 4
+//РџСѓРЅРєС‚ 4
 function uniqueRecords()
 {
     $link   = dbConnect();
@@ -64,7 +64,7 @@ function uniqueRecords()
 }
 function generateName($length = 8)
 {
-    $chars    = 'йцукенгшщзхъывапролджэячсмитьбю';
+    $chars    = 'Р№С†СѓРєРµРЅРіС€С‰Р·С…СЉС‹РІР°РїСЂРѕР»РґР¶СЌСЏС‡СЃРјРёС‚СЊР±СЋ';
     $numChars = strlen($chars);
     $string   = '';
     for ($i = 0; $i < $length; $i++) {
@@ -75,7 +75,7 @@ function generateName($length = 8)
 function showTable($result)
 {
     
-    print('<table border=5><tr> <td>номер</td><td>имя</td><td>дата рождения</td><td>пол</td><td>возраст</td></tr>');
+    print('<table border=5><tr> <td>РЅРѕРјРµСЂ</td><td>РёРјСЏ</td><td>РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ</td><td>РїРѕР»</td><td>РІРѕР·СЂР°СЃС‚</td></tr>');
     
     $i = 0;
     while ($row = $result->fetch_assoc()) {
